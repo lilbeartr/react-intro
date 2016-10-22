@@ -9,11 +9,15 @@ function onSearchClick(event) {
 
 
 class SearchForm extends React.Component {
+    onSearchClick(event) {
+        event.preventDefault()
+        console.log('this.onSearchClick', event)
+    }
     render() {
         return (
               <form>
                     <input type="text" />
-                    <button onClick={onSearchClick}> Search </button>
+                    <button onClick={this.onSearchClick}> Search </button>
              </form>
   
         )
