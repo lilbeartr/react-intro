@@ -29,8 +29,8 @@ const Items = (props) => {
             <ul>
 
                 {
-                    props.items.map(item => (
-                     <li>{item}</li>
+                    props.items.map((item, i) => (
+                     <li key={i}>{item.name}</li>
                     )) 
                 }
 
@@ -60,7 +60,28 @@ const AppWithoutDescription = () => (
 const App = () => {
     const appTitle = 'Fronttechs: React'
     const appContent = 'This is a simple react application Kappa123'
-    const items = [ "Arteezy" , "Sumail" , "Universe" , "Zai" , "Cr1t" ]
+    const items = [ 
+        {
+            id: 1 ,
+            name: 'Arteezy'
+        },
+        {
+            id: 2 ,
+            name: 'Sumail'
+        },
+        {
+            id: 3,
+            name: "Universe"
+        },
+        {
+            id: 4,
+            name: 'Zai'
+        },
+        {
+            id: 5,
+            name: 'Cr1t'
+        }
+     ]
 
     return (
             <section>
