@@ -2,21 +2,20 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 
-function onSearchClick(event) {
-    event.preventDefault()
-    console.log('onSearchClick', event)
-}
-
 
 class SearchForm extends React.Component {
     onSearchClick(event) {
         event.preventDefault()
         console.log('this.onSearchClick', event)
     }
+    onQueryChange(event) {
+        const query = event.target.value
+        console.log('this.onQueryChange', query)
+    }
     render() {
         return (
               <form>
-                    <input type="text" />
+                    <input type="text" onChange={this.onQueryChange} />
                     <button onClick={this.onSearchClick}> Search </button>
              </form>
   
