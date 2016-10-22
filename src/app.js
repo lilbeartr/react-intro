@@ -1,9 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { SearchForm } from './search-form'
-
-
-
+import axios from 'axios'
 
 const Header = (props) => (
 
@@ -14,80 +12,53 @@ const Header = (props) => (
 
 )
 
-const Items = (props) => {
-
-    console.log(props.items) 
-
-    return (
-            <ul>
-
-                {
-                    props.items.map((item, i) => (
-                     <li key={i}>{item.name}</li>
-                    )) 
-                }
-
-             </ul>
-    )
-
-}
-
-const Content = (props) => (
-
-    <section>
-
-        <p> {props.content} </p>
-        <Items items={props.items} />
-
-    </section>
-
-
+const MovieList = (props) => (
+    <ul>
+    {props.movies.map((movie, i) => {
+        return (
+            <li key={i}>{movie.Title}</li>
+        )
+    })}
+    </ul>
 )
 
 
-const AppWithoutDescription = () => (
+class App extends React.Component {
 
-    <Header title="No description here" />
-)
 
-const App = () => {
-    const appTitle = 'Fronttechs: React'
-    const appContent = 'This is a simple react application Kappa123'
-    const items = [ 
-        {
-            id: 1 ,
-            name: 'Arteezy'
-        },
-        {
-            id: 2 ,
-            name: 'Sumail'
-        },
-        {
-            id: 3,
-            name: "Universe"
-        },
-        {
-            id: 4,
-            name: 'Zai'
-        },
-        {
-            id: 5,
-            name: 'Cr1t'
+    constructor(props) {
+        super(props)
+        this.state = {
+            movies: []
         }
-     ]
+    }
 
-    return (
-            <section>
-                 <Header title={appTitle} />
-                 <Content 
-                    content={appContent} 
-                    items={items}
-                 />
-            </section>
+    onSearch(query) {
+        axios.get(`http://www.omdbapi.com/?s=${query}&plot=short&r=json`)
+        .then(response => {
+            const movies = response.data.Search 
+            this.setState({
+                movies: movies
+            })
+        })
+    }
+    render() {
+            return (
+                <section>
+                    <h1> Movie Collection</h1>
+                    <SearchForm onSearchSubmit={this.onSearch.bind(this)} />
+                    <MovieList movies={this.state.movies} />
+                 </section>
 
     )  
 
+    }
 }
+
+
+
+
+
 
 const element = document.getElementById('app')
 ReactDOM.render(<App />, element)
