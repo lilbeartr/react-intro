@@ -1,16 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const SearchForm = () => {
+function onSearchClick(event) {
+    event.preventDefault()
+    console.log('onSearchClick')
+}
 
-    return (
+const SearchForm = () => (
         <form>
             <input type="text" />
-            <button type="submit"> search </button>
+            <button onClick={onSearchClick}> Search </button>
         </form>
+  
     )
 
-}
+
+
 
 const Header = (props) => (
 
