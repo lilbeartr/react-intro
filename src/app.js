@@ -6,7 +6,8 @@ import {
     Router,
     Route,
     hashHistory,
-    Link
+    Link,
+    IndexRoute
 } from 'react-router'
 
 const Header = (props) => (
@@ -20,8 +21,7 @@ const Header = (props) => (
 
 const Home = () => (
     <section>
-        <Nav />
-        <h1>This is HOME</h1>
+        <h1>This is homie</h1>
     </section>
 
 )
@@ -93,6 +93,7 @@ class Main extends React.Component {
         return (
             <Router history={hashHistory}>
                 <Route path="/" component={App}>
+                    <IndexRoute component={Home}/>
                     <Route path="search" component={Search}/>
                 </Route>
 
