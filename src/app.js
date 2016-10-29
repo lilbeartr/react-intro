@@ -31,6 +31,7 @@ const Nav = () => (
         <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/search">Search</Link></li>
+            <li><Link to="/detail">Movie Detail</Link></li>
         </ul>
     </nav>
 )
@@ -81,6 +82,11 @@ class Search extends React.Component {
     }
 }
 
+const MovieDetail =() => (
+    <h1>Movie Detail</h1>
+
+)
+
 const App = props => (
     <section>
         <Nav />
@@ -95,6 +101,7 @@ class Main extends React.Component {
                 <Route path="/" component={App}>
                     <IndexRoute component={Home}/>
                     <Route path="search" component={Search}/>
+                    <Route path="detail" component={MovieDetail}/>
                 </Route>
 
             </Router>
