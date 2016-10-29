@@ -22,9 +22,54 @@ const Header = (props) => (
 const Home = () => (
     <section>
         <h1>This is homie</h1>
+        <ul>
+            <li><Link to={batmanQuery}>Batman</Link></li>
+            <li><Link to={avengersQuery}>The Avengers</Link></li>
+            <li><Link to={doctorQuery}>Doctor Strange</Link></li>
+        </ul>
     </section>
 
 )
+
+/*
+?s=Batman
+{
+    pathname: '/search' ,
+    query: {
+        s: "Batman"
+    }
+}
+
+?s=Batman&p=2
+{
+    pathname: '/search' ,
+    query: {
+        s: "Batman",
+        p: 2
+    }
+}
+*/
+
+const batmanQuery = {
+    pathname: '/search',
+    query: {
+        s: "Batman"
+    }
+}
+
+const avengersQuery = {
+    pathname: '/search',
+    query: {
+        s: "The Avengers"
+    }
+}
+
+const doctorQuery = {
+    pathname: '/search',
+    query: {
+        s: "Doctor Strange"
+    }
+}
 
 const Nav = () => (
     <nav>
@@ -58,6 +103,10 @@ class Search extends React.Component {
         this.state = {
             movies: []
         }
+        if (props.location.query.s) {
+            this.onSearch(props.location.query.s)
+        }
+
     }
 
     onSearch(query) {
