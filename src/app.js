@@ -2,6 +2,11 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { SearchForm } from './search-form'
 import axios from 'axios'
+import {
+    Router,
+    Route,
+    hashHistory
+} from 'react-router'
 
 const Header = (props) => (
 
@@ -26,7 +31,7 @@ const MovieList = (props) => (
 )
 
 
-class App extends React.Component {
+class Search extends React.Component {
 
 
     constructor(props) {
@@ -59,9 +64,21 @@ class App extends React.Component {
 }
 
 
+class Main extends React.Component {
+    render() {
+        return (
+            <Router history={hashHistory}>
+                <Route path="/search" 
+                    component={Search}
+                />
+            </Router>
+        )
+    }
+}
+
 
 
 
 
 const element = document.getElementById('app')
-ReactDOM.render(<App />, element)
+ReactDOM.render(<Main />, element)
