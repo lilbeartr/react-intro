@@ -17,6 +17,10 @@ const Header = (props) => (
 
 )
 
+const Home = () => (
+    <h1>This is HOME</h1>
+)
+
 const MovieList = (props) => (
     <ul>
     {props.movies.map((movie, i) => {
@@ -68,6 +72,9 @@ class Main extends React.Component {
     render() {
         return (
             <Router history={hashHistory}>
+                <Route path="/" 
+                    component={Home}
+                />
                 <Route path="/search" 
                     component={Search}
                 />
