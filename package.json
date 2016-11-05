@@ -4,8 +4,10 @@
   "description": "Introduction to React",
   "main": "index.js",
   "scripts": {
-    "copy": "copy src\\index.html dist",
-    "build": "npm run copy && .\\node_modules\\.bin\\webpack --display-error-details",
+    "clean": "rmdir /s /q dist",
+    "copy": "mkdir dist & copy src\\index.html dist",
+    "prebuild": "npm run clean & npm run copy",
+    "build": ".\\node_modules\\.bin\\webpack --display-error-details",
     "start": ".\\node_modules\\.bin\\webpack-dev-server --content-base dist"
   },
   "author": "Tapanit Rungsapoo",
